@@ -3,9 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CriticasTec</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+
+    <title>ROTTEN Tec</title>
+    <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
+
+
+    <div id="loginModal" class="login-modal">
+        <div class="login-box">
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            <h2>Iniciar sesión</h2>
+            <form id="loginForm">
+                <label for="username">Nombre de usuario:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit">Ingresar</button>
+            </form>
+        </div>
+    </div>
+    <header>
+        <div class="logo">
+            ROTTEN TEC
+        </div>
+        <div class="navbar">
+            <a href="#actores">Actores</a>
+            <a href="#peliculas">Películas</a>
+            <a href="#directores">Directores</a>
+            <a href="javascript:void(0)" id="loginLink">LOGIN/SIGNUP</a>
+            
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Buscar película..">
+            <button id="btnbuscar" onclick="search()">Buscar</button>
+        </div>
+
+        <div class="carousel-container">
+            <h2>Crítica a las películas</h2>
+            
+            <!-- Carrusel de películas -->
+            <div class="carousel">
+                <div class="carousel-item">
+                    <img src="ruta/a/la/imagen1.jpg" alt="Título de la película 1">
+                    <div class="carousel-caption">
+                        <h3>Título de la película 1</h3>
+                        <p>"Una película impresionante que combina acción y emoción de manera excepcional."</p>
+                    </div>
+                </div>
+                
+                <div class="carousel-item">
+                    <img src="" alt="Título de la película 2">
+                    <div class="carousel-caption">
+                        <h3>Título de la película 2</h3>
+                        <p>"Un clásico que nunca pasa de moda, una obra maestra del cine."</p>
+                    </div>
+                </div>
+                
+                <div class="carousel-item">
+                    <img src="ruta/a/la/imagen3.jpg" alt="Título de la película 3">
+                    <div class="carousel-caption">
+                        <h3>Título de la película 3</h3>
+                        <p>"Una obra de ciencia ficción revolucionaria con efectos visuales de vanguardia."</p>
+                    </div>
+                </div>
     
+                <!-- Más películas aquí -->
+            </div>
+    
+            <!-- Flechas de navegación -->
+            <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+        
+           
+        
+        
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2024 Cine Search</p>
+    </footer>
+
+    <script src="pelicula.js">
+
+    </script>
 </body>
 </html>
