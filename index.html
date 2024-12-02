@@ -46,54 +46,28 @@
             <button id="btnbuscar" onclick="search()">Buscar</button>
         </div>
 
+        <!-- Contenedor del carrusel -->
         <div class="carousel-container">
             <h2>Crítica a las películas</h2>
             
             <!-- Carrusel de películas -->
-            <div class="carousel">
-                <div class="carousel-item">
-                    <img src="ruta/a/la/imagen1.jpg" alt="Título de la película 1">
-                    <div class="carousel-caption">
-                        <h3>Título de la película 1</h3>
-                        <p>"Una película impresionante que combina acción y emoción de manera excepcional."</p>
-                    </div>
-                </div>
-                
-                <div class="carousel-item">
-                    <img src="" alt="Título de la película 2">
-                    <div class="carousel-caption">
-                        <h3>Título de la película 2</h3>
-                        <p>"Un clásico que nunca pasa de moda, una obra maestra del cine."</p>
-                    </div>
-                </div>
-                
-                <div class="carousel-item">
-                    <img src="ruta/a/la/imagen3.jpg" alt="Título de la película 3">
-                    <div class="carousel-caption">
-                        <h3>Título de la película 3</h3>
-                        <p>"Una obra de ciencia ficción revolucionaria con efectos visuales de vanguardia."</p>
-                    </div>
-                </div>
-    
-                <!-- Más películas aquí -->
+            <div class="carousel" id="carousel">
+                <!-- Aquí se inyectarán las películas dinámicamente -->
             </div>
-    
-            <!-- Flechas de navegación -->
-            <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
-            <button class="next" onclick="moveSlide(1)">&#10095;</button>
+
+        <!-- Flechas de navegación -->
+        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="next" onclick="moveSlide(1)">&#10095;</button>
         </div>
-        
-           
-        
-        
+
     </main>
 
     <!-- Pie de página -->
     <footer>
-        <p>&copy; 2024 Cine Search</p>
+        <p>&copy; 2024 Rotten Tec</p>
     </footer>
 
-    <script src="pelicula.js">
+    <script src="/src/UI.js">
 
     </script>
 </body>

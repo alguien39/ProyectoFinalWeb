@@ -64,6 +64,56 @@ function moveSlide(n) {
     carousel.style.transform = `translateX(-${slideIndex * 100}%)`;
 }
 
+// Función para cargar las películas en el carrusel
+function loadCarousel() {
+    // Realizamos la petición al servidor para obtener las primeras 5 películas
+    fetch('/api/carrusel')
+        .then(response => response.json())
+        .then(peliculas => {
+            // Obtener el contenedor del carrusel
+            const carousel = document.getElementById('carousel');
+
+            // Limpiar cualquier contenido previo en el carrusel
+            carousel.innerHTML = '';
+
+            // Iterar sobre las películas y crear los elementos HTML correspondientes
+            peliculas.forEach(pelicula => {
+                // Crear el contenedor de cada item del carrusel
+                const carouselItem = document.createElement('div');
+                carouselItem.classList.add('carousel-item');
+                
+                // Crear el contenido para cada película
+                const img = document.createElement('img');
+                img.src = pelicula.PosterImg || './img/DefaultImg.JPEG';  // Usar imagen por defecto si no existe el poster
+                img.alt = pelicula.Titulo;
+
+                const caption = document.createElement('div');
+                caption.classList.add('carousel-caption');
+                
+                const titulo = document.createElement('h3');
+                titulo.textContent = pelicula.Titulo;
+
+                const descripcion = document.createElement('p');
+                descripcion.textContent = pelicula.Descripcion;
+
+                // Agregar el contenido al contenedor del carrusel
+                caption.appendChild(titulo);
+                caption.appendChild(descripcion);
+                carouselItem.appendChild(img);
+                carouselItem.appendChild(caption);
+                
+                // Agregar el item al carrusel
+                carousel.appendChild(carouselItem);
+            });
+        })
+        .catch(error => {
+            console.error('Error al cargar las películas:', error);
+        });
+}
+
+// Llamar a la función cuando la página cargue
+window.onload = loadCarousel;
+
 // Configurar un deslizador automático
 setInterval(() => {
     moveSlide(1);
