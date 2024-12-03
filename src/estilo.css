@@ -45,7 +45,6 @@ body {
 
 .modal{
     display: none; /* Por defecto, mostrar el recuadro al cargar la página */
-    position: fixed;
 }
 
 
