@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-const db = require('./src/Connection.js');
+const db = require('./Connection.js');
 const { Console } = require('console');
 db.connect((err) => {
     if (err) {
