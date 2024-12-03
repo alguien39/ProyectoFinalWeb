@@ -333,7 +333,7 @@ footer {
     color: #333;
 }
 
-.review-item h5 {
+.review-item h5,h4 {
     color: #ffcc00;
     font-size: 18px;
 }
@@ -354,4 +354,42 @@ footer {
 .star-rating label:hover,
 .star-rating label:hover ~ label {
     color: #f5b301;
+}
+
+/* Estilo para el contenedor de todas las críticas */
+#reviews-list {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo individual para cada crítica */
+.review {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el nombre del usuario y las estrellas */
+.review h5 {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;  /* Asegura que el texto sea negro */
+    margin-bottom: 10px;
+}
+
+/* Estilo para la crítica escrita */
+.review p {
+    font-size: 1em;
+    color: #333;  /* Asegura que el texto de la crítica sea negro */
+}
+
+/* Estilo para el número de estrellas */
+.review span {
+    color: #f5b301;  /* Color dorado para las estrellas */
 }
