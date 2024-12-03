@@ -6,11 +6,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
 
     <title>ROTTEN Tec</title>
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="./src/estilo.css">
 </head>
 <body>
-
-
     <div id="loginModal" class="login-modal">
         <div class="login-box">
             <span class="close" onclick="closeLoginModal()">&times;</span>
@@ -27,15 +25,12 @@
         </div>
     </div>
     <header>
-        <div class="logo">
-            ROTTEN TEC
-        </div>
+        <div class="logo"><a href="./index.html">ROTTEN TEC</a></div>
         <div class="navbar">
-            <a href="#actores">Actores</a>
-            <a href="#peliculas">Películas</a>
-            <a href="#directores">Directores</a>
+            <a href="./src/Actores.html">Actores</a>
+            <a href="./src/Peliculas.html">Películas</a>
+            <a href="./src/Directores.html">Directores</a>
             <a href="javascript:void(0)" id="loginLink">LOGIN/SIGNUP</a>
-            
         </div>
     </header>
 
@@ -59,16 +54,11 @@
         <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
         <button class="next" onclick="moveSlide(1)">&#10095;</button>
         </div>
-
     </main>
-
     <!-- Pie de página -->
     <footer>
         <p>&copy; 2024 Rotten Tec</p>
     </footer>
-
-    <script src="/src/UI.js">
-
-    </script>
+    <script src="./src/UI.js"></script>
 </body>
 </html>

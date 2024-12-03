@@ -105,6 +105,16 @@ header {
     text-align: center;
 }
 
+.logo > a {
+    color:whitesmoke ;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.logo > a:hover{
+    color:#ccc;
+}
+
 .navbar a {
     color: white;
     text-decoration: none;
