@@ -290,12 +290,12 @@ footer {
 
 /* Flecha de navegación izquierda */
 .prev {
-    left: 10px; /* Coloca la flecha a la izquierda de la imagen */
+    left: 10%; /* Coloca la flecha a la izquierda de la imagen */
 }
 
 /* Flecha de navegación derecha */
 .next {
-    right: 10px; /* Coloca la flecha a la derecha de la imagen */
+    right: 10%; /* Coloca la flecha a la derecha de la imagen */
 }
 
 /* Hover para las flechas */
