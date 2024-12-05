@@ -119,6 +119,57 @@ app.get('/api/carrusel', (req, res) => {
     });
 });
 
+// Endpoint para agregar una nueva película
+app.post('/Peliculas', [
+    check('TituloParam').isString(),
+    check('FechaEstrenoParam').isDate(),
+    check('PresupuestoParam').isFloat({ min: 0 }),
+    check('RecaudacionParam').isFloat({ min: 0 }),
+    check('DirectorIDParam').isInt(),
+    check('CategoriaIDParam').isInt(),
+    check('DuracionMinutosParam').isInt(),
+    check('SinopsisParam').isString(),
+    check('PosterImgParam').isURL(),
+], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
+    const {
+        TituloParam, 
+        FechaEstrenoParam, 
+        PresupuestoParam, 
+        RecaudacionParam, 
+        DirectorIDParam, 
+        CategoriaIDParam, 
+        DuracionMinutosParam, 
+        SinopsisParam, 
+        PosterImgParam
+    } = req.body;
+
+    const query = `CALL AgregarPelicula(?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+
+    db.query(query, [
+        TituloParam, 
+        FechaEstrenoParam, 
+        PresupuestoParam, 
+        RecaudacionParam, 
+        DirectorIDParam, 
+        CategoriaIDParam, 
+        DuracionMinutosParam, 
+        SinopsisParam, 
+        PosterImgParam
+    ], (err, results) => {
+        if (err) {
+            console.error('Error al agregar película:', err);
+            return res.status(500).send('Error al agregar película');
+        }
+        res.json({ message: 'Película agregada exitosamente', data: results });
+    });
+});
+
+
 const PORT = process.env.PORT || 3030;
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto ${PORT}`);

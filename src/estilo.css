@@ -234,18 +234,15 @@ footer {
 /* Estilo para el carrusel (contenedor de las imágenes) */
 .carousel {
     display: flex;
-    overflow: hidden; /* Esconde cualquier contenido fuera del carrusel */
+    overflow: hidden; /* Esconde el contenido fuera del carrusel */
     position: relative;
-    width: 100%; /* Hace que el carrusel ocupe todo el ancho de la página */
-    height: 400px; /* Puedes ajustar la altura según lo que prefieras */
-    margin: 0 auto;
+    width: 100%; /* Carrusel ocupa el 100% del ancho */
+    height: 400px; /* Ajusta la altura según lo que prefieras */
 }
 
-/* Cada item del carrusel */
 .carousel-item {
-    min-width: 100%; /* Cada imagen ocupa el 100% del contenedor */
-    transition: transform 0.5s ease-in-out; /* Efecto de transición suave */
-    position: relative;
+    min-width: 100%; /* Cada elemento ocupa el 100% del contenedor */
+    transition: transform 0.5s ease-in-out; /* Transición suave */
 }
 
 /* Estilo de las imágenes del carrusel */

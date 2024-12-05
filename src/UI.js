@@ -11,54 +11,6 @@ function closeLoginModal() {
    
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Obtener elementos del DOM
-    const reviewModal = document.getElementById('reviewModal');
-    const leaveReviewBtn = document.getElementById('leaveReviewBtn');
-    const closeReviewModal = document.getElementById('closeModal');
-    const submitReviewBtn = document.getElementById('submitReviewBtn');
-    const movieRatingInput = document.querySelector('input[name="rating"]:checked');
-    const movieReviewInput = document.getElementById('movieReview');
-    const userNameInput = document.getElementById('userName');
-
-    // Cargar información de la película (simulada)
-
-
-    // Mostrar el modal al hacer clic en "Dejar Crítica"
-    leaveReviewBtn.addEventListener('click', () => {
-        reviewModal.style.display = 'flex'; // Mostrar el modal
-    });
-    
-
-    // Cerrar el modal al hacer clic en la "X"
-    closeReviewModal.addEventListener('click', () => {
-        reviewModal.style.display = 'none'; // Cerrar el modal
-    });
-
-    // Enviar crítica
-    submitReviewBtn.addEventListener('click', () => {
-        const rating = document.querySelector('input[name="rating"]:checked');
-        const review = movieReviewInput.value;
-        const userName = userNameInput.value;
-
-        if (rating && review && userName) {
-            const reviewElement = document.createElement('div');
-            reviewElement.classList.add('review');
-            reviewElement.innerHTML = `<h5>${userName} - ${rating.value} estrellas</h5><p>${review}</p>`;
-            document.getElementById('reviews-list').appendChild(reviewElement);
-
-            // Limpiar los campos y cerrar el modal
-            movieReviewInput.value = '';
-            userNameInput.value = '';
-            reviewModal.style.display = 'none';
-        } else {
-            alert('Por favor, completa todos los campos.');
-        }
-    });
-});
-
-
-
 
 function search() {
     let query = document.getElementById("searchInput").value;
@@ -94,21 +46,21 @@ let slideIndex = 0; // Índice para controlar la posición de la imagen
 function moveSlide(n) {
     const slides = document.querySelectorAll('.carousel-item');
     const totalSlides = slides.length;
-    
-    // Mover el índice para cambiar la imagen
+    if (totalSlides === 0) {
+        console.log('No se han cargado películas en el carrusel');
+        return; // Si no hay elementos en el carrusel, no hagas nada
+    }
+
     slideIndex += n;
-    
-    // Si llegamos al final, volvemos al inicio
+
     if (slideIndex >= totalSlides) {
         slideIndex = 0;
     }
-    
-    // Si estamos en el inicio, vamos al final
+
     if (slideIndex < 0) {
         slideIndex = totalSlides - 1;
     }
 
-    // Mover el carrusel al nuevo índice
     const carousel = document.querySelector('.carousel');
     carousel.style.transform = `translateX(-${slideIndex * 100}%)`;
 }
