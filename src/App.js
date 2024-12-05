@@ -109,7 +109,7 @@ app.get('/Peliculas/:peliculaID/Actores', (req, res) => {
 
 // Obtener las primeras 5 películas para el carrusel
 app.get('/api/carrusel', (req, res) => {
-    const query = 'SELECT * FROM VistaPeliculas LIMIT 5'; // Obtener las primeras 5 películas
+    const query = 'SELECT * FROM MostrarPeliculas LIMIT 5'; // Obtener las primeras 5 películas
     db.query(query, (err, results) => {
         if (err) {
             console.error('Error al obtener películas para el carrusel:', err);

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>ROTTEN TEC Películas</title>
     <link rel="stylesheet" href="estilo.css">
 </head>
@@ -17,12 +18,26 @@
             <a href="javascript:void(0)" id="loginLink">LOGIN/SIGNUP</a>
         </div>
     </header>
+    
     <main>
-        <p>!Peliculas</p>
+        <h2>Películas</h2>
+
+        <!-- Lista de películas -->
+        <div id="movielist">
+            <div class="movie" id="movie-1">
+                <h3 class="movie-title"><a href="detalle-pelicula.html?id=1">Pelicula de Ejemplo</a></h3>
+            </div>
+            <div class="movie" id="movie-2">
+                <h3 class="movie-title"><a href="detalle-pelicula.html?id=2">Otra Película</a></h3>
+            </div>
+            <!-- Agregar más películas aquí -->
+        </div>
     </main>
+
     <footer>
         <p>&copy; 2024 Rotten Tec</p>
     </footer>
     <script src="./UI.js"></script>
+    <script src="./PeliculasUI.js"></script>
 </body>
 </html>
