@@ -147,6 +147,7 @@ function loadCarousel() {
                 const descripcion = document.createElement('p');
                 descripcion.textContent = pelicula.Descripcion;
 
+                
                 // Agregar el contenido al contenedor del carrusel
                 caption.appendChild(titulo);
                 caption.appendChild(descripcion);
