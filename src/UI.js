@@ -118,7 +118,7 @@ function moveSlide(n) {
 // Función para cargar las películas en el carrusel
 function loadCarousel() {
     // Realizamos la petición al servidor para obtener las primeras 5 películas
-    fetch('/api/carrusel')
+    fetch('http://localhost:3030/api/carrusel')
         .then(response => response.json())
         .then(peliculas => {
             // Obtener el contenedor del carrusel
@@ -135,7 +135,7 @@ function loadCarousel() {
                 
                 // Crear el contenido para cada película
                 const img = document.createElement('img');
-                img.src = pelicula.PosterImg || './img/DefaultImg.JPEG';  // Usar imagen por defecto si no existe el poster
+                img.src = pelicula.Imagen || './img/DefaultImg.JPEG';  // Usar imagen por defecto si no existe el poster
                 img.alt = pelicula.Titulo;
 
                 const caption = document.createElement('div');
@@ -147,6 +147,7 @@ function loadCarousel() {
                 const descripcion = document.createElement('p');
                 descripcion.textContent = pelicula.Descripcion;
 
+                
                 // Agregar el contenido al contenedor del carrusel
                 caption.appendChild(titulo);
                 caption.appendChild(descripcion);
