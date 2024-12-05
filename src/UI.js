@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     leaveReviewBtn.addEventListener('click', () => {
         reviewModal.style.display = 'flex'; // Mostrar el modal
     });
+    
 
     // Cerrar el modal al hacer clic en la "X"
     closeReviewModal.addEventListener('click', () => {
