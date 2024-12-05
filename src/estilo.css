@@ -231,62 +231,119 @@ footer {
 }
 
 
-
 /* Estilo para el carrusel (contenedor de las imágenes) */
 .carousel {
     display: flex;
-    transition: transform 0.5s ease-in-out; /* Deslizar suavemente */
+    overflow: hidden; /* Esconde cualquier contenido fuera del carrusel */
+    position: relative;
+    width: 100%; /* Hace que el carrusel ocupe todo el ancho de la página */
+    height: 400px; /* Puedes ajustar la altura según lo que prefieras */
+    margin: 0 auto;
 }
 
 /* Cada item del carrusel */
 .carousel-item {
-    min-width: 100%;
-    box-sizing: border-box;
+    min-width: 100%; /* Cada imagen ocupa el 100% del contenedor */
+    transition: transform 0.5s ease-in-out; /* Efecto de transición suave */
     position: relative;
 }
 
+/* Estilo de las imágenes del carrusel */
 .carousel-item img {
-    width: 50%;
-    height: 600px; /* Ajusta la altura según lo que desees */
-    object-fit: cover;
+    width: 100%; /* Ancho total del contenedor */
+    height: 100%; /* Alto total del contenedor */
+    object-fit: contain; /* Ajustar la imagen sin recortes */
+    border-radius: 8px; /* Bordes redondeados si deseas */
 }
 
+/* Estilo para las leyendas o títulos del carrusel */
 .carousel-caption {
     position: absolute;
     bottom: 20px;
-    left: 20px;
-    background-color: rgba(0, 0, 0, 0.6);
+    left: 110px;
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro y semi-transparente */
     color: white;
     padding: 10px;
+    font-size: 1em;
     border-radius: 5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra sutil para el texto */
 }
 
-/* Estilo de las flechas de navegación */
+/* Estilo de las flechas de navegación dentro de círculos, al lado de las imágenes */
 .prev, .next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo oscuro semi-transparente */
     color: white;
-    font-size: 30px;
-    border: none;
-    padding: 10px;
+    font-size: 20px; /* Tamaño más pequeño */
+    width: 40px; /* Ancho del círculo */
+    height: 40px; /* Alto del círculo */
+    border-radius: 50%; /* Forma circular */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centra la flecha dentro del círculo */
     cursor: pointer;
     z-index: 10;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transición suave */
 }
 
-
+/* Flecha de navegación izquierda */
 .prev {
-    left: 20px;
+    left: 10px; /* Coloca la flecha a la izquierda de la imagen */
 }
 
+/* Flecha de navegación derecha */
 .next {
-    right: 20px;
+    right: 10px; /* Coloca la flecha a la derecha de la imagen */
 }
 
+/* Hover para las flechas */
 .prev:hover, .next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo más oscuro al hacer hover */
+    transform: translateY(-50%) scale(1.1); /* Un pequeño zoom al pasar el ratón */
 }
+
+/* Botón de navegación cuando no hay contenido (opcional) */
+.prev:disabled, .next:disabled {
+    background-color: rgba(0, 0, 0, 0.3);
+    cursor: not-allowed;
+}
+
+
+/* Estilos adicionales para mejorar la accesibilidad y la experiencia del usuario */
+.carousel-item img:focus {
+    outline: 3px solid #ffcc00; /* Resalta la imagen cuando se navega por teclado */
+}
+
+/* Opcional: Estilo para el punto de indicación de la imagen activa */
+.carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.carousel-indicators span {
+    height: 10px;
+    width: 10px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.carousel-indicators .active {
+    background-color: #ffcc00;
+}
+
+.carousel-indicators span:hover {
+    background-color: #ffb300; /* Efecto de hover */
+}
+
 
 #movieReview {
     width: 100%;
