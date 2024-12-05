@@ -402,3 +402,46 @@ footer {
 .review span {
     color: #f5b301;  /* Color dorado para las estrellas */
 }
+
+/* Estilos generales del formulario */
+.formulario {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #2c2c2c;
+    padding: 20px;
+    border-radius: 8px;
+    color: white;
+}
+
+.formulario label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.formulario input, .formulario select, .formulario textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #1c1c1c;
+    color: white;
+}
+
+.formulario textarea {
+    resize: vertical;
+}
+
+.formulario button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ffcc00;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.formulario button:hover {
+    background-color: #e6b800;
+}

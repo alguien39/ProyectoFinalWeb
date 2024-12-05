@@ -9,6 +9,7 @@ function LoadPeliculas() {
                 // Crear el div contenedor de cada película
                 const itemPelicula = document.createElement('div');
                 itemPelicula.classList.add('movie');  // Agregar clase "movie"
+                pelicula.PeliculaID = `${pelicula.PeliculaID}`;
 
                 // Crear el título de la película como un enlace
                 const tituloPelicula = document.createElement('h3');
