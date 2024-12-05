@@ -59,9 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-
-
 function search() {
     let query = document.getElementById("searchInput").value;
     let resultsContainer = document.getElementById("searchResults");

@@ -35,5 +35,32 @@ function LoadPeliculas() {
         });
 }
 
+// Obtener el ID de la película desde la URL
+const urlParams = new URLSearchParams(window.location.search);
+const movieId = urlParams.get('id');  // Esto te da el ID de la película
+
+// Función para cargar los detalles de la película
+function loadMovieDetails() {
+    fetch(`http://localhost:3030/Peliculas/${movieId}`)
+        .then(response => response.json())
+        .then(movie => {
+            // Asignar los valores de la película a los elementos HTML correspondientes
+            document.getElementById('movie-title').textContent = movie.Titulo;
+            document.getElementById('movie-description').textContent = movie.Descripcion;
+            document.getElementById('movie-genre').textContent = movie.Genero;
+            document.getElementById('movie-duration').textContent = movie.Duracion;
+            document.getElementById('movie-image').src = movie.UrlImagen;
+
+            // Si deseas cargar las críticas también, puedes hacerlo aquí
+            loadReviews(movieId);
+        })
+        .catch(error => {
+            console.error('Error al cargar los detalles de la película:', error);
+        });
+}
+
+
+// Llamar la función para cargar los detalles de la película cuando la página se carga
+window.onload = loadMovieDetails;
 
 window.onload = LoadPeliculas;
