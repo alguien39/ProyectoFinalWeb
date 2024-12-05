@@ -264,7 +264,7 @@ footer {
 /* Estilo para las imágenes dentro del carrusel */
 .carousel-item img {
     width: 100%;
-    height: 550px; /* Altura fija de las imágenes */
+    height: 470px; /* Altura fija de las imágenes */
     object-fit: contain; /* La imagen cubrirá el área sin distorsionarse */
     border-bottom: 2px solid #ddd; /* Línea separadora entre imagen y texto */
 }

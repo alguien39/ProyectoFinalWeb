@@ -161,6 +161,16 @@ function loadCarousel() {
 
             // Inicializar los botones de navegación
             updateCarousel();
+
+            setInterval(function() {
+                if (currentIndex < peliculas.length - 1) {
+                    currentIndex++;
+                } else {
+                    currentIndex = 0; // Volver al primer item al llegar al final
+                }
+                updateCarousel();
+            }, 5000); // Desplazarse cada 5 segundos
+        
         })
         .catch(error => {
             console.error('Error al cargar las películas:', error);
