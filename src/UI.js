@@ -1,3 +1,5 @@
+
+
 function openLoginModal() {
     document.getElementById("loginModal").style.display = "flex"; // Muestra el modal
 }
@@ -66,6 +68,8 @@ function moveSlide(n) {
 }
 
 // Función para cargar las películas en el carrusel
+let currentIndex = 0;
+
 function loadCarousel() {
     // Realizamos la petición al servidor para obtener las primeras 5 películas
     fetch('http://localhost:3030/api/carrusel')
@@ -73,9 +77,12 @@ function loadCarousel() {
         .then(peliculas => {
             // Obtener el contenedor del carrusel
             const carousel = document.getElementById('carousel');
+            const carouselItemsContainer = document.createElement('div');
+            carouselItemsContainer.classList.add('carousel-items');
 
             // Limpiar cualquier contenido previo en el carrusel
             carousel.innerHTML = '';
+            carousel.appendChild(carouselItemsContainer);
 
             // Iterar sobre las películas y crear los elementos HTML correspondientes
             peliculas.forEach(pelicula => {
@@ -97,27 +104,64 @@ function loadCarousel() {
                 const descripcion = document.createElement('p');
                 descripcion.textContent = pelicula.Descripcion;
 
-                
                 // Agregar el contenido al contenedor del carrusel
                 caption.appendChild(titulo);
                 caption.appendChild(descripcion);
                 carouselItem.appendChild(img);
                 carouselItem.appendChild(caption);
                 
-                // Agregar el item al carrusel
-                carousel.appendChild(carouselItem);
+                // Agregar el item al contenedor de items
+                carouselItemsContainer.appendChild(carouselItem);
             });
+
+            // Inicializar los botones de navegación
+            updateCarousel();
+
+            setInterval(function() {
+                if (currentIndex < peliculas.length - 1) {
+                    currentIndex++;
+                } else {
+                    currentIndex = 0; // Volver al primer item al llegar al final
+                }
+                updateCarousel();
+            }, 5000); // Desplazarse cada 5 segundos
+        
         })
         .catch(error => {
             console.error('Error al cargar las películas:', error);
         });
 }
 
+// Función para mover el carrusel
+function updateCarousel() {
+    const carouselItemsContainer = document.querySelector('.carousel-items');
+    const carouselItems = document.querySelectorAll('.carousel-item');
+    const totalItems = carouselItems.length;
+
+    // Desplazar el carrusel
+    const offset = -currentIndex * 100;  // Ajuste para mostrar un solo item a la vez
+    carouselItemsContainer.style.transform = `translateX(${offset}%)`;
+
+    // Botón de navegación "siguiente"
+    document.querySelector('.next').onclick = function() {
+        if (currentIndex < totalItems - 1) {
+            currentIndex++;
+        } else {
+            currentIndex = 0;
+        }
+        updateCarousel();
+    };
+
+    // Botón de navegación "anterior"
+    document.querySelector('.prev').onclick = function() {
+        if (currentIndex > 0) {
+            currentIndex--;
+        } else {
+            currentIndex = totalItems - 1;
+        }
+        updateCarousel();
+    };
+}
+
 // Llamar a la función cuando la página cargue
 window.onload = loadCarousel;
-
-// Configurar un deslizador automático
-setInterval(() => {
-    moveSlide(1);
-}, 5000);  // Cambia de imagen cada 5 segundos
-
