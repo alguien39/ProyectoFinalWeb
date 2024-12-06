@@ -23,7 +23,7 @@
         <h2>Películas</h2>
 
         <!-- Lista de películas -->
-        <div id="movie-list">
+        <div id="movielist">
             <div class="movie" id="movie-1">
                 <h3 class="movie-title"><a href="detalle-pelicula.html?id=1">Pelicula de Ejemplo</a></h3>
             </div>
@@ -64,9 +64,9 @@
                 <textarea id="sinopsis" name="sinopsis" rows="4" required></textarea>
 
                 <label for="poster">URL del Poster</label>
-                <input type="url" id="poster" name="poster" required>
+                <input id="poster" name="poster" required>
 
-                <button type="submit">Agregar Película</button>
+                <button id="btnAgregarPelicula">Agregar Película</button>
             </form>
         </div>
 
@@ -77,6 +77,5 @@
     </footer>
 
     <script src="./PeliculasUI.js"></script>
-    <script src="./UI.js"></script>
 </body>
 </html>

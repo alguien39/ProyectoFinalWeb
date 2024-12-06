@@ -460,3 +460,32 @@ footer {
 .formulario button:hover {
     background-color: #e6b800;
 }
+
+select {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #f9f9f9; /* Fondo claro */
+    border: 1px solid #ccc; /* Borde gris */
+    border-radius: 5px;
+    color: #000000; /* Color de texto */
+}
+
+/* Estilo para las opciones del select */
+option {
+    padding: 10px;
+    font-size: 16px;
+    color: #000000; /* Color de texto */
+    background-color: #fff; /* Fondo blanco */
+}
+
+/* Estilo para cuando el select tiene el foco */
+select:focus {
+    outline: none;
+    border-color: #007BFF; /* Borde azul al tener el foco */
+}
+
+/* Modificar el color del texto cuando se selecciona */
+option:checked {
+    background-color: #007BFF; /* Fondo azul para opciones seleccionadas */
+    color: white; /* Color blanco para texto seleccionado */
+}

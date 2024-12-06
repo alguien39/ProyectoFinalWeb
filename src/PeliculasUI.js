@@ -38,7 +38,7 @@ function LoadPeliculas() {
 // Obtener el ID de la película desde la URL
 const urlParams = new URLSearchParams(window.location.search);
 const movieId = urlParams.get('id');  // Esto te da el ID de la película
-
+/*
 // Función para cargar los detalles de la película
 function loadMovieDetails() {
     fetch(`http://localhost:3030/Peliculas/${movieId}`)
@@ -100,90 +100,68 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Por favor, completa todos los campos.');
         }
     });
-});
+});*/
 
 document.addEventListener("DOMContentLoaded", () => {
-    const directorSelect = document.getElementById("director");
-    const categoriaSelect = document.getElementById("categoria");
+    // Función para cargar los directores y categorías
+    const director = document.getElementById('director');
+    const categoria = document.getElementById('categoria');
+    const cargarDatos = () => {
+        fetch('http://localhost:3030/Peliculas')
+            .then(response => response.json())
+            .then(data => {
+                // Limpiar las opciones previas
+                director.innerHTML = '<option value="">Seleccione un director</option>';
+                categoria.innerHTML = '<option value="">Seleccione una categoría</option>';
 
-    // Realizar una petición GET para cargar directores y categorías
-    fetch('http://localhost:3030/Peliculas')
-        .then(response => response.json())
-        .then(data => {
-            // Cargar los directores en el selector
-            data.directores.forEach(director => {
-                const option = document.createElement("option");
-                option.value = director.DirectorID;
-                option.textContent = director.Nombre;
-                directorSelect.appendChild(option);
+                // Cargar los directores en el selector
+                data.forEach(pelicula => {
+                    const option = document.createElement("option");
+                    option.value = pelicula.DirectorId;
+                    option.textContent = pelicula.Director;
+                    director.appendChild(option);
+                });
+
+                // Cargar las categorías en el selector
+                data.forEach(pelicula => {
+                    const option = document.createElement("option");
+                    option.value = pelicula.CategoriaId;
+                    option.textContent = pelicula.Categoria;
+                    categoria.appendChild(option);
+                });
+            })
+            .catch(error => {
+                console.error('Error al cargar los datos:', error);
+                alert('Hubo un error al cargar los directores y categorías.');
             });
+    };
 
-            // Cargar las categorías en el selector
-            data.categorias.forEach(categoria => {
-                const option = document.createElement("option");
-                option.value = categoria.CategoriaID;
-                option.textContent = categoria.Nombre;
-                categoriaSelect.appendChild(option);
-            });
-        })
-        .catch(error => {
-            console.error('Error al cargar los datos:', error);
-            alert('Hubo un error al cargar los directores y categorías.');
-        });
+    // Cargar los datos automáticamente al cargar la página
+    cargarDatos();
+});
 
-    // Función que maneja el envío del formulario
-    document.getElementById("formAgregarPelicula").addEventListener("submit", function (event) {
-        event.preventDefault();  // Prevenir el envío por defecto del formulario
+document.getElementById("btnAgregarPelicula").addEventListener("click", async function (event) {
+    event.preventDefault();
+    const formulario = document.getElementById("formAgregarPelicula");
+    const datosForm = new FormData(formulario);
 
-        // Recoger datos del formulario
-        const titulo = document.getElementById("titulo").value;
-        const fechaEstreno = document.getElementById("fechaEstreno").value;
-        const presupuesto = parseFloat(document.getElementById("presupuesto").value);
-        const recaudacion = parseFloat(document.getElementById("recaudacion").value);
-        const directorID = parseInt(directorSelect.value);
-        const categoriaID = parseInt(categoriaSelect.value);
-        const duracion = parseInt(document.getElementById("duracion").value);
-        const sinopsis = document.getElementById("sinopsis").value;
-        const poster = document.getElementById("poster").value;
+    // Convertir FormData a objeto simple
+    const objetoDatos = Object.fromEntries(datosForm.entries());
 
-        // Crear el objeto con los datos de la película
-        const peliculaData = {
-            TituloParam: titulo,
-            FechaEstrenoParam: fechaEstreno,
-            PresupuestoParam: presupuesto,
-            RecaudacionParam: recaudacion,
-            DirectorIDParam: directorID,
-            CategoriaIDParam: categoriaID,
-            DuracionMinutosParam: duracion,
-            SinopsisParam: sinopsis,
-            PosterImgParam: poster
-        };
-
-        // Realizar el POST a la API para agregar la película
-        fetch('http://localhost:3030/Peliculas', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(peliculaData)
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.message) {
-                alert('Película agregada exitosamente');
-                // Limpiar el formulario o redirigir al usuario si es necesario
-                document.getElementById("formAgregarPelicula").reset();
-            } else {
-                alert('Error al agregar la película: ' + data.errors);
-            }
-        })
-        .catch(error => {
-            console.error('Error al enviar los datos:', error);
-            alert('Hubo un error al agregar la película. Intenta nuevamente.');
-        });
-    });
+    fetch('http://localhost:3030/Peliculas', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(objetoDatos)
+    })
+    .then(response => response.json())
+    .then(dato => console.log(dato))
+    .catch(error => console.error('Error:', error));
 });
 
 // Llamar la función para cargar los detalles de la película cuando la página se carga
-window.onload = loadMovieDetails;
-window.onload = LoadPeliculas;
+window.onload = function() {
+    /*loadMovieDetails();*/
+    LoadPeliculas();
+};
