@@ -38,19 +38,52 @@ app.get('/Peliculas', (req, res) => {
     });
 });
 
+// Eliminar crítica por ID
+app.delete('/Criticas/:criticaID', (req, res) => {
+    const { criticaID } = req.params;  // Obtener el ID de la crítica desde los parámetros de la URL
+    console.log('ID de crítica a eliminar:', criticaID);  // Verificar qué ID está recibiendo el servidor
+
+    // Aquí cambiamos 'ID' por 'CriticaID' según el nombre del campo en tu tabla
+    const query = `DELETE FROM Criticas WHERE CriticaID = ?`;
+
+    db.query(query, [criticaID], (err, results) => {
+        if (err) {
+            console.error('Error al eliminar crítica:', err);
+            return res.status(500).send('Error al eliminar crítica');
+        }
+
+        // Si no se afectaron filas, significa que no se encontró la crítica con ese ID
+        if (results.affectedRows === 0) {
+            return res.status(404).json({ message: 'Crítica no encontrada' });
+        }
+
+        console.log('Crítica eliminada con éxito');
+        res.json({ message: 'Crítica eliminada exitosamente' });
+    });
+});
+
+
 //Mostrar criticas por IdDePelicula
 app.get('/Criticas/:peliculaID', (req, res) => {
     const { peliculaID } = req.params;
-    const query = `SELECT * FROM MostrarCriticasPorPelicula WHERE PeliculaID = ?`;
+    const query = `SELECT * FROM Criticas WHERE PeliculaID = ?`;
+
     db.query(query, [peliculaID], (err, results) => {
         if (err) {
             console.error('Error al obtener críticas:', err);
-            res.status(500).send('Error al obtener críticas');
-        } else {
-            res.json(results);
+            return res.status(500).send('Error al obtener críticas');
         }
+        
+        // Si no se encuentran críticas, devolvemos un arreglo vacío
+        if (results.length === 0) {
+            return res.json([]);
+        }
+
+        // Devolver las críticas como respuesta en formato JSON
+        res.json(results);
     });
 });
+
 
 
 //Agregar Critica a IdDePelicula

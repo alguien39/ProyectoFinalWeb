@@ -97,13 +97,18 @@ body {
 
 #leaveReviewBtn {
     margin-top: 20px;
-    padding: 10px 20px;
+    padding: 8px 15px; /* Reducir el tamaño del botón */
     background-color: #ffcc00;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    width: 40%;
+    display: block; /* Asegura que el botón esté en una nueva línea */
+    width: 200px; /* Puedes ajustar el ancho, 200px es un ejemplo de tamaño más pequeño */
+    font-size: 14px; /* Hacer el texto más pequeño */
+    margin-left: auto;
+    margin-right: auto; /* Centrar el botón en su contenedor */
 }
+
 
 #leaveReviewBtn:hover {
     background-color: #e6b800;
@@ -402,3 +407,18 @@ footer {
 .review span {
     color: #f5b301;  /* Color dorado para las estrellas */
 }
+.delete-review-btn {
+    width: 100px; /* Ajusta el ancho según lo necesites */
+    height: 30px; /* Ajusta el alto del botón */
+    font-size: 14px; /* Tamaño de fuente más pequeño */
+    padding: 5px 10px; /* Espaciado dentro del botón */
+    display: flex; /* Asegura que el icono y el texto estén alineados */
+    align-items: center; /* Centra el contenido dentro del botón */
+    justify-content: center; /* Centra el contenido dentro del botón */
+}
+
+.delete-review-btn i {
+    font-size: 16px; /* Tamaño más pequeño para el icono */
+    margin-right: 5px; /* Separación entre el icono y el texto */
+}
+
